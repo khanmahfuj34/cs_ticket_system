@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TicketCard({ ticket }) {
+function TicketCard({ ticket, handelAddTask }) {
   const { title, description, customer, priority, status, createdAt } = ticket;
 
   return (
@@ -26,7 +26,7 @@ function TicketCard({ ticket }) {
         <p className="text-[12px] text-gray-400">{createdAt}</p>
       </div>
       <p className="text-sm text-gray-500 mt-2">{customer}</p>
-      <button className="w-full mt-5 py-3 rounded-xl bg-[#3752FD] hover:bg-[#2441f0] text-white font-semibold transition">
+      <button onClick={()=>handelAddTask(ticket)} className="w-full mt-5 py-3 rounded-xl bg-[#3752FD] hover:bg-[#2441f0] text-white font-semibold transition">
         Add to Task
       </button>
 

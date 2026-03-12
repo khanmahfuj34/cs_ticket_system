@@ -21,7 +21,7 @@ function Navbar() {
         </div>
 
         <button className="btn rounded-xl bg-[#3752FD] hover:bg-[#2441f0] text-white border-none shadow-none">
-         <i class="fa-solid fa-plus"></i> New Ticket
+          New Ticket
         </button>
       </div>
     </div>

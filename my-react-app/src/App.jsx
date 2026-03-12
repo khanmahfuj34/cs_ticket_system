@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+
 import Banner from './component/Banner'
 import Navbar from './component/Navbar'
 import TicketCard from './component/TicketCard'
@@ -10,11 +10,16 @@ import ticketsData from './data/ticketdata.json'
 
 function App() {
   const [selectedTask, setSelectedTask]=useState([]);
-  const handelAddTAsk = (ticket)=>{
+  const handelAddTask = (ticket)=>{
     const alreadyExists = selectedTask.find((item) => item.id===ticket.id);
     if (alreadyExists){
-      toast.error('This ticket is already Added')
+      toast.error('This ticket is already Added');
+      console.log('This ticket')
+      return;
     }
+    setSelectedTask([...selectedTask, ticket]);
+    toast.success('Ticket added to task status')
+    console.log("ticket added")
   }
 
   return (
@@ -33,7 +38,10 @@ function App() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {ticketsData.map((ticket) => (
-            <TicketCard key={ticket.id} ticket={ticket} />
+            <TicketCard key={ticket.id}
+            ticket={ticket}
+            handelAddTask={handelAddTask}
+             />
           ))}
         </div>
       </div>
@@ -50,7 +58,7 @@ function App() {
         </div>
       </div>
     </div>
-    <ToastContainer />
+    <ToastContainer></ToastContainer>
     </>
   )
 }
